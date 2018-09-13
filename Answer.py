@@ -9,6 +9,8 @@ a = {0: 'ноль',
      8: 'восемь', 
      9: 'девять'}
 
+class RangeException(Exception):
+  pass
 
 def firsttaskfivesem(x, y=''):
 
@@ -17,19 +19,23 @@ def firsttaskfivesem(x, y=''):
        'hex': hex(x)}
 
   result = ['शून्यता']
-
+    
   if x in a.keys():
     result.clear()
     result.append(a.get(x))
+
     if y in b.keys():
-      result.append(b.get(y))
+        result.append(b.get(y))
   else:
-    print('Введите число от 0 до 9!')
+    raise RangeException('Введите число от 0 до 9!')
   return result
 
-print(firsttaskfivesem(0))
-#print(firsttaskfivesem(0,'hex'))
-
-if __name__ == "__main__":
+def tests():
   assert firsttaskfivesem(9,'hex') == ['девять','0x9'], 'функция не работает!'
   assert firsttaskfivesem(0) == ['ноль'], 'название введённого числа не совпадает с ожидаемым!'
+
+if __name__ == "__main__":
+  x = int(input('Введите первый аргумент:'))
+  y = input('Введите второй аргумент(а можете и не вводить):')
+  tests()
+  print(firsttaskfivesem(x,y))
