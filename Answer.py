@@ -12,11 +12,19 @@ a = {0: 'ноль',
      9: 'девять'}
 
 class RangeException(Exception):
-  pass
+  def __init__(self,text):
+        RangeException.txt = text
 
 def firsttaskfivesem(x, y=''):
   """
-
+Функция принимает 2 аргумента, один из них - необязательный,
+возвращает название введённого числа (первый аргумент), а если 
+второй входной аргумент type имеет значение bin, oct, hex, то 
+функция преобразует это число в бинарную, восьмеричную или 
+шестнадцатеричную форму. 
+В теле функции фиксируется момент времени, когда она начинает 
+выполнятся, а также возникло ли исключение в процессе выполнения,
+эти данные записываются в файл 
   """
   start_time = time.ctime(time.time())
   logger = []
@@ -38,15 +46,16 @@ def firsttaskfivesem(x, y=''):
         logger.append("Исключения: ConvertTypeException")
       
   else:
-#    raise RangeException('Введите число от 0 до 9!')
      print('Введите число от 0 до 9!')
      logger.append("Исключения: RangeException")
 
   if len(logger) == 1:   
      logger.append("Исключения: не выявлено!")
-
-  with open('newfile.txt', 'a') as f:
-   f.write(str(logger) + "\n")
+  try:
+    with open('newfile.txt', 'a') as f:
+      f.write(str(logger) + "\n")
+  except IOError:
+    print("Ошибка при чтении/записи файла/в файл") 
   return result
 
 def tests():
@@ -54,7 +63,16 @@ def tests():
   assert firsttaskfivesem(0) == ['ноль'], 'название введённого числа не совпадает с ожидаемым!'
 
 if __name__ == "__main__":
-  x = int(input('Введите первый аргумент:'))
-  y = input('Введите второй аргумент(а можете и не вводить):')
- # tests()
+   x = int(input('Введите первый аргумент:'))
+   y = input('Введите второй аргумент(а можете и не вводить):')
+   # tests() 
   print(firsttaskfivesem(x,y))
+
+"""
+try:
+   x = int(input('Введите первый аргумент:'))
+   if (x < 0) | (x > 9):
+     raise RangeException('Введите число от 0 до 9!')
+  except RangeException:
+    print (RangeException.txt)
+"""
