@@ -68,11 +68,11 @@ if __name__ == "__main__":
    # tests() 
   print(firsttaskfivesem(x,y))
 
-"""
-try:
-   x = int(input('Введите первый аргумент:'))
-   if (x < 0) | (x > 9):
-     raise RangeException('Введите число от 0 до 9!')
-  except RangeException:
-    print (RangeException.txt)
-"""
+
+#try:
+#   x = int(input('Введите первый аргумент:'))
+#   if (x < 0) | (x > 9):
+#     raise RangeException('Введите число от 0 до 9!')
+#  except RangeException:
+#    print (RangeException.txt)
+
