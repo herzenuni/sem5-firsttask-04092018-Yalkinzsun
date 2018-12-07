@@ -42,7 +42,7 @@ def firsttaskfivesem(x, y=''):
     if y in b.keys():
         result.append(b.get(y))
     elif y != '':
-        print('Выбирите систему счисления: hex, bin или oct!')
+        print('Выберите систему счисления: hex, bin или oct!')
         logger.append("Исключения: ConvertTypeException")
       
   else:
